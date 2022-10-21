@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    <h1>All Articles</h1>
+  </div>
+<%# Our blog has <% Article.public_count articles and counting! %> 
+  <div class="card-body">
+    <ol>
+      <%@allArticles.each do |item| %>
+        <li>
+          <%= link_to item.title,article_path(item)%>
+        </li>
+      <% end %>
+    </ol>
+  <div> 
+  <%=link_to "Add New Article",new_article_path,class:"btn btn-primary"%>
+
+<div>
