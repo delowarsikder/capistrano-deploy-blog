@@ -1,10 +1,8 @@
 <div class="card-body">
   <%= form_with model: articleForm do |form| %>
-
     <% if articleForm.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(articleForm.errors.count, "error") %> prohibited this Article from being saved:</h2>
-
         <ul>
           <% articleForm.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -12,18 +10,20 @@
         </ul>
       </div>
     <% end %>
-
     <div class="field form-group" >
       <%= form.label :title ,class:"form-label"%>
       <%= form.text_field :title,class:"form-control" %>
     </div>
-
     <div class="field form-group" >
       <%= form.label :body ,class:"form-label"%>
       <%= form.text_area :body,class:"form-control" %>
     </div>
-
-    <div class="field form-group" > 
+    <br>
+    <div class="field form-group">
+      <%= form.label "Article Photo" ,class:"form-label"%>
+      <%=form.file_field :images , multiple: true, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+    </div>
+    <div class="field form-group" >
       <%= form.label :status ,class:"form-label"%><br>
       <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-control" %>
     </div>
@@ -35,7 +35,5 @@
         <%= form.submit value:"Update Article",class:"btn btn-primary"%>
       <% end %>
     </div>
-  
   <% end %>
-
 </div>

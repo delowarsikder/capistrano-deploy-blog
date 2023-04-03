@@ -2,7 +2,7 @@
   <div class="card-header">
     <h1>All Articles</h1>
   </div>
-<%# Our blog has <% Article.public_count articles and counting! %> 
+  Our blog has <%= Article.public_count %> articles and counting!
   <div class="card-body">
     <ol>
       <%@allArticles.each do |item| %>
@@ -11,7 +11,6 @@
         </li>
       <% end %>
     </ol>
-  <div> 
-  <%=link_to "Add New Article",new_article_path,class:"btn btn-primary"%>
-
-<div>
+    <%=link_to "Add New Article",new_article_path,class:"btn btn-primary"%>
+  </div>
+</div>

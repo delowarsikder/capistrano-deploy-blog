@@ -2,7 +2,6 @@
   <h3>Comments :</h3>
   
   <%@showArticle.comments.each do |comment|%>
-  
     <div class="card boder:none">
       <% unless comment.archived? %>
         <p>
@@ -15,7 +14,7 @@
           <%=comment.body%>
         </p>
         <p>
-          <%=link_to "Delete Comment", [comment.article,comment],data:{turbo_method: :delete, turbo_confirm:"Are your sure?"},class:"btn btn-danger"%>
+          <%=link_to "Delete", [comment.article,comment],data:{turbo_method: :delete, turbo_confirm:"Are your sure?"},class:"btn btn-danger"%>
         </p>
       <%end%>
     </div>
