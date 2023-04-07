@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+<<<<<<< HEAD
   include Visible
 
   has_many :comments, dependent: :destroy
@@ -16,4 +17,13 @@ class Article < ApplicationRecord
       image.variant(resize_to_limit: [150,150]).processed
     end
   end
+=======
+    include Visible
+    has_many :comments, dependent: :destroy
+
+    validates :title, presence: true
+    validates :body, presence: true, length: { minimum: 5 }
+   
+
+>>>>>>> development
 end

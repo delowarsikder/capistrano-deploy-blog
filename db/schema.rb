@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_04_07_042612) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +50,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_042612) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_122601) do
+>>>>>>> development
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -67,7 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_042612) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
+<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+=======
+>>>>>>> development
   add_foreign_key "comments", "articles"
 end

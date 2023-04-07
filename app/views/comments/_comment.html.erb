@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
   <h3>Comments :</h3>
   
@@ -22,3 +23,28 @@
 <br>
 
 </div>
+=======
+
+<% unless comment.archived? %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+
+  <p>
+    <%= link_to "Destroy Comment", [comment.article, comment], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
+
+
+<%end%>
+
+>>>>>>> development

@@ -32,6 +32,7 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+<<<<<<< HEAD
 
 
 test: 
@@ -43,3 +44,5 @@ local:
   root: <%= Rails.root.join("storage")%>
 
 
+=======
+>>>>>>> development

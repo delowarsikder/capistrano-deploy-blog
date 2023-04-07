@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="card">
   <div class="card-header">
     <h1>All Articles</h1>
@@ -15,3 +16,20 @@
     <%=link_to "Add New Article",new_article_path,class:"btn btn-primary"%>
   </div>
 </div>
+=======
+<h1>Articles</h1>
+
+Our blog has <%= Article.public_count %> articles and counting!
+
+<ul>
+  <% @articles.each do |article| %>
+    <% unless article.archived? %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
+>>>>>>> development

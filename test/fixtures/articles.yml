@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   titile: MyString
   body: MyText
 
 two:
   titile: MyString
+=======
+  title: MyString
+  body: MyText
+
+two:
+  title: MyString
+>>>>>>> development
   body: MyText
