@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'admin', password: 'secret', except: %i[index show]
+  http_basic_authenticate_with name: 'admin', password: 'secret', except: %i[index new show]
 
   def index
-    @allArticles = Article.all.order(:title).with_attached_images
+    @allArticles = Article.all.includes(:comments)
   end
 
   def show
@@ -15,7 +15,6 @@ class ArticlesController < ApplicationController
 
   def create
     @newArticle = Article.new(article_label)
-    @newArticle.images.attach(params[:article][:images])
     if @newArticle.save
       redirect_to articles_url
     else
@@ -45,7 +44,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_label
-    params.require(:article).permit(:title, :body, :status, :images)
+    params.require(:article).permit(:title, :body, :status, :picture, images: [])
   end
 end
-

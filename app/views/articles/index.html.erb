@@ -6,7 +6,8 @@
   <div class="card-body">
     <ol>
       <%@allArticles.each do |item| %>
-        <li>
+       <li>
+        <%=image_tag item.picture, width: "20px" if item.picture.attached?%>
           <%= link_to item.title,article_path(item)%>
         </li>
       <% end %>

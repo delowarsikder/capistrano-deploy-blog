@@ -20,8 +20,25 @@
     </div>
     <br>
     <div class="field form-group">
-      <%= form.label "Article Photo" ,class:"form-label"%>
-      <%=form.file_field :images , multiple: true, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+      <%= form.label :picture,class:"form-label"%>
+      <%=form.file_field :picture, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%if articleForm.picture.attached?%>
+        <%=image_tag articleForm.picture, style:"width: 200px; display: block"%>
+      <%end%>
+    </div>
+    <br>
+    <div class="field form-group">
+      <%= form.label :images,class:"form-label"%>
+      <%=form.file_field :images,multiple: true, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%if articleForm.picture.attached?%>
+        <%articleForm.images.each do |image|%>
+          <%=link_to image_tag(image,width:"100px"), image,width: "200"%>
+        <%end%>
+      <%end%>
     </div>
     <div class="field form-group" >
       <%= form.label :status ,class:"form-label"%><br>
