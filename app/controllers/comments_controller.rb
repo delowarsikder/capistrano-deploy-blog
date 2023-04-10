@@ -1,22 +1,28 @@
 class CommentsController < ApplicationController
-
-  http_basic_authenticate_with name: "admin", password: "secret", only: :destroy
+  http_basic_authenticate_with name: 'admin', password: 'secret', only: [:destroy]
+  before_action :set_article  ,only: %i[create update destroy]
 
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    puts 'current article id'
+    puts @currentArticle
+
+    @newComment = @currentArticle.comments.create(comment_params)
+    redirect_to article_path(@currentArticle)
   end
+
   def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@article), status: :see_other
+    @currentComment = @currentArticle.comments.find(params[:id])
+    @currentComment.destroy
+    redirect_to article_path(@currentArticle), status: :see_other
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
-    end
 
+  def set_article
+    @currentArticle = Article.find(params[:article_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body, :status)
+  end
 end

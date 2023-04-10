@@ -1,29 +1,33 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
- <div>
- <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
- </div> 
+<div class="card">
+ 
+  <div class="card-header">
+    <h4>Add Comment:</h4>
+  </div>
+  
+  <div class="card-body">
+    <%= form_with model:[@showArticle,@showArticle.comments.build] do|form| %>
+      <div class="field form-group">
+        <%= form.label :commenter ,class:"form-label"%><br>
+        <%= form.text_field :commenter,class:"form-control" %>
+      </div>
+    
+      <div  class="field form-group">
+        <%= form.label :body, class:"form-label"%><br>
+        <%= form.text_area :body, class:"form-control"%>
 
-
-  <div>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+      </div>
+      
+      <div class="field form-group">
+        <%= form.label :status,class:"form-label" %><br>
+        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-select" %>
+      </div>
+      <br>
+      <div>
+      <%= form.submit value:"Add Comment",class:"btn btn-primary"%>
+      </div>
+    <%end %>
+    
   </div>
 
-<p>
-  <%= form.label :status %><br>
-  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-</p>
+</div>
 
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
-  
-  <li> <%= link_to "Back" ,root_path %> </li>
-</ul>
