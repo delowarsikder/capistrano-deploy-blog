@@ -1,3 +1,61 @@
+<<<<<<< HEAD
+<div class="card-body">
+  <%= form_with model: articleForm do |form| %>
+    <% if articleForm.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(articleForm.errors.count, "error") %> prohibited this Article from being saved:</h2>
+        <ul>
+          <% articleForm.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field form-group" >
+      <%= form.label :title ,class:"form-label"%>
+      <%= form.text_field :title,class:"form-control" %>
+    </div>
+    <div class="field form-group" >
+      <%= form.label :body ,class:"form-label"%>
+      <%= form.text_area :body,class:"form-control" %>
+    </div>
+    <br>
+    <div class="field form-group">
+      <%= form.label :picture,class:"form-label"%>
+      <%=form.file_field :picture, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%if articleForm.picture.attached?%>
+        <%=image_tag articleForm.picture, style:"width: 200px; display: block"%>
+      <%end%>
+    </div>
+    <br>
+    <div class="field form-group">
+      <%= form.label :images,class:"form-label"%>
+      <%=form.file_field :images,multiple: true, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%if articleForm.picture.attached?%>
+        <%articleForm.images.each do |image|%>
+          <%=link_to image_tag(image,width:"100px"), image,width: "200"%>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="field form-group" >
+      <%= form.label :status ,class:"form-label"%><br>
+      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-control" %>
+    </div>
+    <br>
+    <div class="field form-group" >
+      <%if params[:id].nil?%>
+        <%= form.submit value:"Create Article",class:"btn btn-success"%>
+      <% else %>
+        <%= form.submit value:"Update Article",class:"btn btn-primary"%>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+=======
 <%= form_with model: article do |form| %>
   <div>
     <%= form.label :title %><br>
@@ -26,3 +84,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+>>>>>>> development
