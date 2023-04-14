@@ -21,7 +21,7 @@ require "capistrano/rails/migrations"
 require "capistrano/rbenv"
 require 'capistrano/puma'
 install_plugin Capistrano::Puma 
-install_plugin Capistrano::Puma::Systemd, load_hooks: false
+install_plugin Capistrano::Puma::Systemd
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
