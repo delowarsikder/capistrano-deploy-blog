@@ -25,7 +25,7 @@
     </div>
     <div class="form-group">
       <%if articleForm.picture.attached?%>
-        <%=image_tag articleForm.picture, style:"width: 200px; display: block"%>
+        <%=link_to image_tag(articleForm.picture,width:"150px"),articleForm.picture %>
       <%end%>
     </div>
     <br>
@@ -36,7 +36,7 @@
     <div class="form-group">
       <%if articleForm.picture.attached?%>
         <%articleForm.images.each do |image|%>
-          <%=link_to image_tag(image,width:"100px"), image,width: "200"%>
+          <%=link_to image_tag(image,width:"150px"), image%>
         <%end%>
       <%end%>
     </div>

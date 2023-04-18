@@ -13,7 +13,7 @@
         <br>
       <%end%>
     <%end%>
-    <div class="card-body">
+    <div class="card-body m-2 p-2">
       <%if @showArticle.body.length >300 %>
         <%=link_to truncate(@showArticle.body,length:300)%>
       <%else%>
@@ -21,14 +21,19 @@
       <%end%>
       <br>
       <br>
-      <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-        <%= link_to "Home", articles_path, class:"btn btn-primary"%> |
-        <%= link_to "Edit" , edit_article_path(@showArticle), class:"btn btn-secondary"%> |
-        <%= link_to "Destroy", article_path(@showArticle), data: {turbo_method: :delete,turbo_confirm: "Are you sure?"} ,class:"btn btn-danger"%>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group p-1" role="group" aria-label="First group">
+          <%= link_to "Home", articles_path, class:"btn btn-primary"%>
+        </div>
+        <div class="btn-group p-1" role="group" aria-label="Second group">
+          <%= link_to "Edit" , edit_article_path(@showArticle), class:"btn btn-secondary"%>
+        </div>
+        <div class="btn-group p-1" role="group" aria-label="Third group">
+          <%= button_to "Delete", @showArticle, method: :delete ,form: { data: { turbo_confirm: 'Are you sfda fsure?' } },class:"btn btn-danger"%>
+        </div>
       </div>
     </div>
   </div>
-  <%= render @showArticle.comments%>
   <%= render 'comments/comment'%>
   <%= render 'comments/form' %>
 </div>
