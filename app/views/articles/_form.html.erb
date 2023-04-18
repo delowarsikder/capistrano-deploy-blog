@@ -18,21 +18,21 @@
       <%= form.label :body ,class:"form-label"%>
       <%= form.text_area :body,class:"form-control" %>
     </div>
-    <br>
-    <div class="field form-group">
+    <div class="field form-group mt-2">
       <%= form.label :picture,class:"form-label"%>
       <%=form.file_field :picture, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
     </div>
+    <%# show insert picture %>
     <div class="form-group">
       <%if articleForm.picture.attached?%>
         <%=link_to image_tag(articleForm.picture,width:"150px"),articleForm.picture %>
       <%end%>
     </div>
-    <br>
-    <div class="field form-group">
+    <div class="field form-group mt-2">
       <%= form.label :images,class:"form-label"%>
       <%=form.file_field :images,multiple: true, accept: 'images/png , images/gif , images/jpeg' ,class:"form-control" %>
     </div>
+    <%# show insert images %>
     <div class="form-group">
       <%if articleForm.picture.attached?%>
         <%articleForm.images.each do |image|%>
@@ -40,12 +40,11 @@
         <%end%>
       <%end%>
     </div>
-    <div class="field form-group" >
-      <%= form.label :status ,class:"form-label"%><br>
-      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-control" %>
+    <div class="field form-group mt-2" >
+      <%= form.label :status ,class:"form-label"%>
+      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-group form-control" %>
     </div>
-    <br>
-    <div class="field form-group" >
+    <div class="field form-group mt-2" >
       <%if params[:id].nil?%>
         <%= form.submit value:"Create Article",class:"btn btn-success"%>
       <% else %>

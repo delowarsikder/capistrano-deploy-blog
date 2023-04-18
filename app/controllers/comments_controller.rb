@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   http_basic_authenticate_with name: 'admin', password: 'secret', only: [:destroy]
   before_action :set_article, only: %i[create update destroy]
 
+  def new
+    @newComment = @currentArticle.comments.new
+  end
+
   def create
     @newComment = @currentArticle.comments.create(comment_params)
     respond_to do |format|
@@ -9,7 +13,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to article_path(@currentArticle), notice: 'You have comment this article.' }
         format.json { render :show, status: :created, location: @currentArticle }
       else
-        format.html { render :new, status: :unprocessable_entity }
+         format.html { redirect_to article_path(@currentArticle), status: :see_other }
         format.json { render json: @currentArticle.errors, status: :unprocessable_entity }
       end
     end

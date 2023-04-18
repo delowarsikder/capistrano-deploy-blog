@@ -2,12 +2,12 @@
   <div class="card-header">
     <h1>All Articles</h1>
   </div>
-  Our blog has <%= Article.public_count %> articles and counting!
+  <%#= Article.public_count %>
   <div class="card-body">
     <ol>
       <%@allArticles.each do |item| %>
-       <li>
-        <%=image_tag item.picture, width: "20px" if item.picture.attached?%>
+        <li>
+          <%=image_tag item.picture, width: "20px" if item.picture.attached?%>
           <%= link_to item.title,article_path(item)%>
         </li>
       <% end %>

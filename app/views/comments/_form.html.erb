@@ -1,33 +1,36 @@
 <div class="card">
- 
   <div class="card-header">
     <h4>Add Comment:</h4>
   </div>
-  
   <div class="card-body">
     <%= form_with model:[@showArticle,@showArticle.comments.build] do|form| %>
+      <% if @showArticle.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(@showArticle.errors.count, "error") %></h2>
+          <ul>
+            <% @showArticle.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="field form-group">
         <%= form.label :commenter ,class:"form-label"%><br>
         <%= form.text_field :commenter,class:"form-control" %>
       </div>
-    
       <div  class="field form-group">
         <%= form.label :body, class:"form-label"%><br>
         <%= form.text_area :body, class:"form-control"%>
-
       </div>
-      
       <div class="field form-group">
         <%= form.label :status,class:"form-label" %><br>
         <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:"form-select" %>
       </div>
       <br>
       <div>
-      <%= form.submit value:"Add Comment",class:"btn btn-primary"%>
+        <%= form.submit value:"Add Comment",class:"btn btn-primary"%>
       </div>
     <%end %>
-    
   </div>
-
 </div>
-
