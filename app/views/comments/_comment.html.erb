@@ -1,8 +1,8 @@
 <div class="m-1">
   <h3>Comments :</h3>
   <%@showArticle.comments.each do |comment|%>
-    <div class="card boder:none p-2">
-      <% unless comment.archived? %>
+    <% if comment.public? %>
+      <div class="card boder:none mt-1 p-1">
         <p>
           <strong>Commenter:</strong>
           <%=comment.commenter%>
@@ -14,7 +14,7 @@
         <p>
           <%= button_to "Delete", [comment.article,comment], method: :delete ,data: { turbo_confirm: 'Are you sfda fsure?' },class:"btn btn-danger"%>
         </p>
-      <%end%>
-    </div>
+      </div>
+    <%end%>
   <%end%>
 </div>

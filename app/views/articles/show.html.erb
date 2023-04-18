@@ -1,18 +1,22 @@
 <div>
   <div class="card">
-    <h2 class="card-header">
-      <%= @showArticle.title%>
-    </h2>
-    <%if @showArticle.picture.attached?%>
-      <%=link_to image_tag(@showArticle.picture,width:"100px"), @showArticle.picture,width: "200"%>
-    <%end%>
-    <br>
-    <%if @showArticle.images.attached?%>
-      <%@showArticle.images.each do |image|%>
-        <%=link_to image_tag(image,width:"100px"), image,width: "200"%>
-        <br>
+    <div class="card-header">
+      <h1> <%= @showArticle.title%></h1>
+      <h6>status: <%=@showArticle.status%></h6>
+    </div>
+    <div class="m-2 p-2">
+      <%if @showArticle.picture.attached?%>
+        <%=link_to image_tag(@showArticle.picture,width:"100px"), @showArticle.picture,width: "200"%>
       <%end%>
-    <%end%>
+    </div>
+    <div class="m-2 p-2">
+      <%if @showArticle.images.attached?%>
+        <%@showArticle.images.each do |image|%>
+          <%=link_to image_tag(image,width:"100px"), image,width: "200"%>
+          <br>
+        <%end%>
+      <%end%>
+    </div>
     <div class="card-body m-2 p-2">
       <%if @showArticle.body.length >300 %>
         <%=link_to truncate(@showArticle.body,length:300)%>
